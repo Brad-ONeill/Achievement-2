@@ -1,5 +1,5 @@
 //setting array
-var repository = [];
+var repo = [];
 
 //setting objects
 var pok1 = {
@@ -18,13 +18,13 @@ var pok3 = {
 	type: ["Dark", "Water"]
 };
 
-repository = [pok1, pok2, pok3];
+repo = [pok1, pok2, pok3];
 
 //loop
 for (var i = 0; i <= 2; i++) {
-	document.write('<p>' + repository[i].name + ' (height: ' + repository[i].height + 'm)</p>');
+	document.write('<p>' + repo[i].name + ' (height: ' + repo[i].height + 'm)</p>');
 
-	if (repository[i].height > 1.4) {
+	if (repo[i].height > 1.4) {
 		document.write('<b>Woah! Look at that chonky boi.</b>')
 	}
 }
