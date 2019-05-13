@@ -23,4 +23,8 @@ repository = [pok1, pok2, pok3];
 //loop
 for (var i = 0; i <= 2; i++) {
 	document.write('<p>' + repository[i].name + ' (height: ' + repository[i].height + 'm)</p>');
+
+	if (repository[i].height > 1.4) {
+		document.write('<b>Woah! Look at that chonky boi.</b>')
+	}
 }
