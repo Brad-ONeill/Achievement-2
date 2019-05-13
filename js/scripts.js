@@ -3,17 +3,17 @@ var repo = [];
 
 //setting objects
 var pok1 = {
-	name: "Pikachu",
+	name: "<h2>Pikachu",
 	height: 0.4,
 	type: ["Eletric"]
 };
 var pok2 = {
-	name: "Gengar",
+	name: "<h2>Gengar",
 	height: 1.5,
 	type: ["Ghost", "Poison"]
 };
 var pok3 = {
-	name: "Crawdaunt",
+	name: "<h2>Crawdaunt",
 	height: 1.1,
 	type: ["Dark", "Water"]
 };
@@ -22,9 +22,9 @@ repo = [pok1, pok2, pok3];
 
 //loop
 for (var i = 0; i <= 2; i++) {
-	document.write('<p>' + repo[i].name + ' (height: ' + repo[i].height + 'm)</p>');
+	document.write(repo[i].name + ' (height: ' + repo[i].height + 'm)</h2>');
 
 	if (repo[i].height > 1.4) {
-		document.write('<b>Woah! Look at that chonky boi.</b>')
+		document.write('<b>&nbsp;-&nbsp;Woah! Look at this chonky boi.</b>')
 	}
 }

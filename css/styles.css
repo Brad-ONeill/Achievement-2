@@ -1,0 +1,27 @@
+:root {
+	--text-grey: #868986;
+	--text-teal: #23A692;
+	--off-white: #F1F1F1;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: var(--off-white);
+	font-family: 'Comfortaa', cursive;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.6;
+	color: var(--text-grey);
+	margin: 20px;
+}
+
+h2 {
+	color: var(--text-teal);
+	margin-bottom: 0;
+	margin-top: 15px;
+}
