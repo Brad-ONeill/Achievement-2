@@ -1,6 +1,3 @@
-//setting array
-var repo = [];
-
 //setting objects
 var pok1 = {
 	name: "<h2>Pikachu",
