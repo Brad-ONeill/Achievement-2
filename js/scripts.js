@@ -3,19 +3,19 @@ var pokemonRepository = (function () {
 	//this is now a 'local variable'
 	var repo = [
 		{
-		  name: "Pikachu",
-		  height: 0.4,
-		  type: ["Eletric"]
+			name: "Pikachu",
+			height: 0.4,
+			type: ["Eletric"]
 		},
 		{
-		  name: "Gengar",
-		  height: 1.5,
-		  type: ["Ghost", "Poison"]
+			name: "Gengar",
+			height: 1.5,
+			type: ["Ghost", "Poison"]
 		},
 		{
-		  name: "Crawdaunt",
-		  height: 1.1,
-		  type: ["Dark", "Water"]
+			name: "Crawdaunt",
+			height: 1.1,
+			type: ["Dark", "Water"]
 		}
 
 	];
@@ -45,7 +45,7 @@ console.log(pmon); //printing to console?
 pmon.forEach(function (entry) {
 	document.write('<h2>' + entry.name + '</h2><br>Height: ' + entry.height + 'm<br><br>');
 
-//no change
+	//no change
 	if (entry.height > 1.4) {
 		document.write('<b>&nbsp;-&nbsp;Woah! Look at this chonky boi.</b>')
 	}
@@ -53,7 +53,6 @@ pmon.forEach(function (entry) {
 
 /*
 --- previous loop for reference ---
-
 repo.forEach(function (entry) {
 	document.write('<h2>' + entry.name + '</h2><br>Height: ' + entry.height + 'm<br><br>');
 
