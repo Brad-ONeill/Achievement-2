@@ -20,6 +20,21 @@ var pokemonRepository = (function () {
 
 	];
 
+	//functions inside of new global variable
+	function add(pmon) {
+		repo.push(pmon);
+	}
+
+	//defining new function 'getALL'
+	function getALL() {
+		return repo; //returns contents of local variable
+	}
+
+	return {
+		add: add,
+		getALL: getALL
+	};
+
 })(); //end of IIFE
 
 repo.forEach(function (entry) {
