@@ -15,7 +15,7 @@ body {
 	font-family: 'Comfortaa', cursive;
 	font-weight: 400;
 	font-size: 16px;
-	line-height: 1.6;
+	line-height: 1;
 	color: var(--text-grey);
 	margin: 20px;
 }
