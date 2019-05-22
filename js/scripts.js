@@ -26,3 +26,14 @@ repo.forEach(function(entry) {
 	}
 });
 
+/*
+function printArrayDetails(pokemonList) {
+	for (var i = 0; i < pokemonList.length; i++) {
+		document.write('<h2>' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + 'm)</h2>');
+
+		if (pokemonList[i].height > 1.4) {
+			document.write('<b>&nbsp;-&nbsp;Woah! Look at this chonky boi.</b>');
+		}
+	}
+}
+*/
