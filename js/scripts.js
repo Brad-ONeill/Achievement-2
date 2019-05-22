@@ -1,6 +1,6 @@
-//New global variable
+//new global variable
 var pokemonRepository = (function () {
-	//this is now a local variable
+	//this is now a 'local variable'
 	var repo = [
 		{
 		  name: "Pikachu",
@@ -24,9 +24,9 @@ var pokemonRepository = (function () {
 		repo.push(pokemon);
 	}
 
-	//defining new function 'getALL'
+	//defining function 'getALL'
 	function getALL() {
-		return repo; //returns contents of local variable
+		return repo; //returns contents of 'local variable'
 	}
 
 	return {
@@ -36,16 +36,16 @@ var pokemonRepository = (function () {
 
 })(); //end of IIFE
 
-//new variable outside of the IIFE
-var pmon = pokemonRepository.getALL()
+//new variable (pmon) outside of the IIFE, for loop to reference
+var pmon = pokemonRepository.getALL();
 
-console.log(pmon) //printing to console
+console.log(pmon); //printing to console?
 
-
-repo.forEach(function (entry) {
+//Updated loop to point to new variable, 'pmon'
+pmon.forEach(function (entry) {
 	document.write('<h2>' + entry.name + '</h2><br>Height: ' + entry.height + 'm<br><br>');
 
-
+//no change
 	if (entry.height > 1.4) {
 		document.write('<b>&nbsp;-&nbsp;Woah! Look at this chonky boi.</b>')
 	}
