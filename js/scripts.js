@@ -20,9 +20,8 @@ var pokemonRepository = (function () {
 
 	];
 
-	//functions inside of new global variable
-	function add(pmon) {
-		repo.push(pmon);
+	function add(pokemon) {
+		repo.push(pokemon);
 	}
 
 	//defining new function 'getALL'
@@ -36,6 +35,12 @@ var pokemonRepository = (function () {
 	};
 
 })(); //end of IIFE
+
+//new variable outside of the IIFE
+var pmon = pokemonRepository.getALL()
+
+console.log(pmon) //printing to console
+
 
 repo.forEach(function (entry) {
 	document.write('<h2>' + entry.name + '</h2><br>Height: ' + entry.height + 'm<br><br>');
