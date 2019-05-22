@@ -17,7 +17,7 @@ var repo = [
 	}
 ];
 
-repo.forEach(function (entry) {
+repo.forEach(function(entry) {
 	document.write('<h2>' + entry.name + '</h2><br>Height: ' + entry.height + 'm<br><br>');
 
 	console.log(entry);
