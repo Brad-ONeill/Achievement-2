@@ -25,30 +25,30 @@ var pokemonRepository = (function () {
 	}
 
 	function addListItem(monsters) {
-		var pmonButtonText = document.createTextNode(pmon.name);
 
+		var pmonButtonText = document.createTextNode(pmon.name);
+		//element definitions
 		var $div = document.createElement('div');
 		var $ul = document.createElement('ul');
 		var $li = document.createElement('li');
 		var $pokebutton = document.createElement('button');
-		
+		//classes
 		$pokebutton.classList.add('pokebut');
 		$div.classList.add('dex');
-		
+		//DOM elements
 		$pokebutton.appendChild(pmonButtonText);
 		$ul.appendChild($li);
 		$li.appendChild($pokebutton);
 	}
-	
+
 	function getALL() {
 		return repo;
 	}
 
-	
 	return {
 		add: add,
 		getALL: getALL,
-		addListItem: addListItem
+		addListItem: addListItem,
 	};
 
 })(); //end of IIFE
@@ -56,6 +56,14 @@ var pokemonRepository = (function () {
 var pmon = pokemonRepository.getALL();
 
 console.log(pmon);
+
+
+
+pmon.forEach(function (monsters) {
+	pmon.addListItem(monsters);
+});
+
+
 
 
 
