@@ -20,35 +20,6 @@ var pokemonRepository = (function () {
 
 	];
 	//end of repo
-	
-	//defining content areas
-	var $header = document.createElement('header');
-	var $div = document.createElement('div');
-	var $ul = document.createElement('ul');
-	var $li = document.createElement('li');
-	var $footer = document.createElement('footer');
-
-	//blueprint of page
-	var $body = document.querySelector('body');
-	$body.appendChild($header);
-	
-	var $body = document.querySelector('body');
-	$body.appendChild($div);
-	
-	var $bdiv = document.querySelector('div');
-	$div.appendChild($ul);
-	
-	var $ul = document.querySelector('ul');
-	$ul.appendChild($li);
-	
-	var $body = document.querySelector('body');
-	$body.appendChild($footer);
-	
-	$header.classList.add('title')
-	$header.innerText = 'Pokedex';
-	$li.classList.add('pokedex_item')
-	
-
 
 	function add(pokemon) {
 		repo.push(pokemon);
@@ -57,11 +28,22 @@ var pokemonRepository = (function () {
 	function getALL() {
 		return repo;
 	}
+	
+	function addListItem(){
+		//defining li and class
+		var $li = document.createElement('li');
+			$li.classList.add('pokedex_item');
+		//assigning li to ul parent
+		var $ul = document.querySelector('ul');
+			$ul.appendChild($li);
+	
+	}
 
 	//function returns
 	return {
 		add: add,
-		getALL: getALL
+		getALL: getALL,
+		addListItem: addListItem
 
 	};
 
@@ -70,21 +52,9 @@ var pokemonRepository = (function () {
 
 //pmon is the full repository
 var pmon = pokemonRepository.getALL();
+var list = pokemonRepository.addListItem();
+
 
 console.log(pmon);
 
 
-
-
-
-
-/*
-pmon.forEach(function (entry) {
-	document.write('<h2>' + entry.name + '</h2><br>Height: ' + entry.height + 'm<br><br>');
-
-	//no change
-	if (entry.height > 1.4) {
-		document.write('<b>&nbsp;-&nbsp;Woah! Look at this chonky boi.</b>')
-	}
-});
-*/
