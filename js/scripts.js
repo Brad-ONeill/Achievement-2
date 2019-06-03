@@ -20,6 +20,35 @@ var pokemonRepository = (function () {
 
 	];
 	//end of repo
+	
+	//defining content areas
+	var $header = document.createElement('header');
+	var $div = document.createElement('div');
+	var $ul = document.createElement('ul');
+	var $li = document.createElement('li');
+	var $footer = document.createElement('footer');
+
+	//blueprint of page
+	var $body = document.querySelector('body');
+	$body.appendChild($header);
+	
+	var $body = document.querySelector('body');
+	$body.appendChild($div);
+	
+	var $bdiv = document.querySelector('div');
+	$div.appendChild($ul);
+	
+	var $ul = document.querySelector('ul');
+	$ul.appendChild($li);
+	
+	var $body = document.querySelector('body');
+	$body.appendChild($footer);
+	
+	$header.classList.add('title')
+	$header.innerText = 'Pokedex';
+	$li.classList.add('pokedex_item')
+	
+
 
 	function add(pokemon) {
 		repo.push(pokemon);
@@ -28,20 +57,6 @@ var pokemonRepository = (function () {
 	function getALL() {
 		return repo;
 	}
-
-	function addListitem(list) {
-	
-		var $pokedex = document.createElement('div');
-		$pokedex.setAttribute('class', 'pokedex');
-		
-		var $ul = document.createElement('ul');
-		var $li = document.createElement('li');
-		
-		var $info_button = document.createElement('div');
-		$info_button.setAttribute('class', 'p-button');
-		
-	}
-
 
 	//function returns
 	return {
@@ -57,6 +72,7 @@ var pokemonRepository = (function () {
 var pmon = pokemonRepository.getALL();
 
 console.log(pmon);
+
 
 
 
