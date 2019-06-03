@@ -1,4 +1,4 @@
-//IIFE
+//start of IIFE
 var pokemonRepository = (function () {
 	//local variable
 	var repo = [
@@ -19,29 +19,49 @@ var pokemonRepository = (function () {
 		}
 
 	];
-
-	function getALL() {
-		return repo;
-	}
+	//end of repo
 
 	function add(pokemon) {
 		repo.push(pokemon);
 	}
 
+	function getALL() {
+		return repo;
+	}
+
+	function addListitem(list) {
+	
+		var $pokedex = document.createElement('div');
+		$pokedex.setAttribute('class', 'pokedex');
+		
+		var $ul = document.createElement('ul');
+		var $li = document.createElement('li');
+		
+		var $info_button = document.createElement('div');
+		$info_button.setAttribute('class', 'p-button');
+		
+	}
+
+
+	//function returns
 	return {
 		add: add,
 		getALL: getALL
 
 	};
 
-})(); //end of IIFE
+})();
+//end of IIFE
 
 //pmon is the full repository
 var pmon = pokemonRepository.getALL();
 
 console.log(pmon);
 
-//Updated loop to point to new variable, 'pmon'
+
+
+
+
 /*
 pmon.forEach(function (entry) {
 	document.write('<h2>' + entry.name + '</h2><br>Height: ' + entry.height + 'm<br><br>');
