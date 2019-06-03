@@ -28,15 +28,20 @@ var pokemonRepository = (function () {
 	function getALL() {
 		return repo;
 	}
-	
-	function addListItem(){
+
+	function addListItem(entry) {
 		//defining li and class
 		var $li = document.createElement('li');
-			$li.classList.add('pokedex_item');
+		$li.classList.add('pokedex_item');
 		//assigning li to ul parent
 		var $ul = document.querySelector('ul');
-			$ul.appendChild($li);
-	
+		$ul.appendChild($li);
+
+		var $info_button = document.createElement('button');
+		$info_button.classList.add('p-button');	
+		$info_button.innerHTML = entry.name;
+		$li.appendChild($info_button);
+		
 	}
 
 	//function returns
@@ -52,9 +57,9 @@ var pokemonRepository = (function () {
 
 //pmon is the full repository
 var pmon = pokemonRepository.getALL();
-var list = pokemonRepository.addListItem();
-
 
 console.log(pmon);
 
-
+pmon.forEach(function (entry, index) {
+	pokemonRepository.addListItem(entry);
+});
