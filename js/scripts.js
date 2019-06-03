@@ -42,6 +42,7 @@ var pmon = pokemonRepository.getALL();
 console.log(pmon); //printing to console?
 
 //Updated loop to point to new variable, 'pmon'
+/*
 pmon.forEach(function (entry) {
 	document.write('<h2>' + entry.name + '</h2><br>Height: ' + entry.height + 'm<br><br>');
 
@@ -50,6 +51,8 @@ pmon.forEach(function (entry) {
 		document.write('<b>&nbsp;-&nbsp;Woah! Look at this chonky boi.</b>')
 	}
 });
+*/
+
 
 /*
 --- previous loop for reference ---
