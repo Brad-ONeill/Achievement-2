@@ -29,6 +29,8 @@ var pokemonRepository = (function () {
 	}
 
 	function addListItem(pokemon) {
+		var buttonText = document.createTextNode('pmon.name')
+
 		var $div = document.createElement('div');
 		var $ul = document.createElement('ul');
 		var $li = document.createElement('li');
