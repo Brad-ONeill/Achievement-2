@@ -2,9 +2,13 @@
 var pokemonRepository = (function () {
 	//local variable
 	var repo = [];
+  var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 	//end of repo
 
-	var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+	function loadList() {
+		return fetch(apiUrl)
+	
+	};
 	
 	function add(pokemon) {
 		repo.push(pokemon);
