@@ -1,11 +1,7 @@
 //start of IIFE
 var pokemonRepository = (function () {
 	var repo = [];
-	var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
-	
-	function loadList() {
-	
-	}
+	var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=151';
 
 	function add(pokemon) {
 		repo.push(pokemon);
@@ -13,6 +9,20 @@ var pokemonRepository = (function () {
 
 	function getALL() {
 		return repo;
+	}
+
+	function loadList() {
+		return fetch(apiUrl).then(function (response) {
+			return response.json();
+		}).then(function (json) {
+			json.results.forEach(function (entry) {
+				var pokemon = {
+					name: entry.name,
+					detailsUrl: entry.url
+				};
+				add(pokemon);
+			});
+		});
 	}
 
 	function addListItem(entry) {
@@ -38,6 +48,20 @@ var pokemonRepository = (function () {
 
 	}
 
+	function loadDetails(entry) {
+		var url = item.detailsUrl;
+		return fetch(url).then(function (response) {
+			return response.json();
+		}).then(function (details) {
+			// Now we add the details to the item
+			item.imageUrl = details.sprites.front_default;
+			item.height = details.height;
+			item.types = Object.keys(details.types);
+		}).catch(function (e) {
+			console.error(e);
+		});
+	}
+
 	function showDetails(pokemon) {
 		console.log(pokemon);
 	}
@@ -47,12 +71,19 @@ var pokemonRepository = (function () {
 		add: add,
 		getALL: getALL,
 		addListItem: addListItem,
-		showDetails: showDetails
+		showDetails: showDetails,
+		loadList: loadList
 
 	};
 
 })();
 //end of IIFE
+pokemonRepository.loadList().then(function () {
+	// Now the data is loaded!
+	pokemonRepository.getAll().forEach(function (pokemon) {
+		addListItem(pokemon);
+	});
+});
 
 //pmon is the full repository
 var pmon = pokemonRepository.getALL();
