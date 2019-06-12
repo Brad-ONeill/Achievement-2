@@ -1,26 +1,11 @@
 //start of IIFE
 var pokemonRepository = (function () {
 	//local variable
-	var repo = [
-		{
-			name: "Pikachu",
-			height: 0.4,
-			type: ["Eletric"]
-		},
-		{
-			name: "Gengar",
-			height: 1.5,
-			type: ["Ghost", "Poison"]
-		},
-		{
-			name: "Crawdaunt",
-			height: 1.1,
-			type: ["Dark", "Water"]
-		}
-
-	];
+	var repo = [];
 	//end of repo
 
+	var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+	
 	function add(pokemon) {
 		repo.push(pokemon);
 	}
