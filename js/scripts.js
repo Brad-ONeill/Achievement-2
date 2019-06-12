@@ -3,6 +3,9 @@ var pokemonRepository = (function () {
 	var repo = [];
 	var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 	
+	function loadList() {
+	
+	}
 
 	function add(pokemon) {
 		repo.push(pokemon);
@@ -30,7 +33,7 @@ var pokemonRepository = (function () {
 
 		//event listener
 		$info_button.addEventListener('click', function (event) {
-			console.log(entry.name)
+			console.log(entry.name);
 		});
 
 	}
