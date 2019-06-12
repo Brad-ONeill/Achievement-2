@@ -2,14 +2,9 @@
 var pokemonRepository = (function () {
 	//local variable
 	var repo = [];
-  var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+	var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 	//end of repo
 
-	function loadList() {
-		return fetch(apiUrl)
-	
-	};
-	
 	function add(pokemon) {
 		repo.push(pokemon);
 	}
@@ -36,11 +31,11 @@ var pokemonRepository = (function () {
 
 		//event listener
 		$info_button.addEventListener('click', function (event) {
-		console.log(entry.name)				
+			console.log(entry.name)
 		});
 
 	}
-	
+
 	function showDetails(pokemon) {
 		console.log(pokemon);
 	}
