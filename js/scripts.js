@@ -1,31 +1,31 @@
 //start of IIFE
 var pokemonRepository = (function () {
-	var repo = [];
+	var repository = [];
 	var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=151';
 
 	function add(pokemon) {
-		repo.push(pokemon);
+		repository.push(pokemon);
 	}
 
 	function getALL() {
-		return repo;
+		return repository;
 	}
 
 	function loadList() {
 		return fetch(apiUrl).then(function (response) {
 			return response.json();
 		}).then(function (json) {
-			json.results.forEach(function (entry) {
+			json.results.forEach(function (item) {
 				var pokemon = {
-					name: entry.name,
-					detailsUrl: entry.url
+					name: item.name,
+					detailsUrl: item.url
 				};
 				add(pokemon);
 			});
 		});
 	}
 
-	function addListItem(entry) {
+	function addListItem(item) {
 
 		//defining li and class
 		var $li = document.createElement('li');
@@ -38,17 +38,17 @@ var pokemonRepository = (function () {
 		//button creation
 		var $info_button = document.createElement('button');
 		$info_button.classList.add('p-button');
-		$info_button.innerHTML = entry.name;
+		$info_button.innerHTML = item.name;
 		$li.appendChild($info_button);
 
 		//event listener
 		$info_button.addEventListener('click', function (event) {
-			console.log(entry.name);
+			console.log(item.name);
 		});
 
 	}
 
-	function loadDetails(entry) {
+	function loadDetails(item) {
 		var url = item.detailsUrl;
 		return fetch(url).then(function (response) {
 			return response.json();
@@ -90,6 +90,6 @@ var pmon = pokemonRepository.getALL();
 
 console.log(pmon);
 
-pmon.forEach(function (entry) {
-	pokemonRepository.addListItem(entry);
+pmon.forEach(function (item) {
+	pokemonRepository.addListItem(item);
 });
