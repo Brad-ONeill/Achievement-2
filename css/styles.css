@@ -46,7 +46,7 @@ button.searchbutton:focus {
 	cursor: pointer;
 }
 
-button.i-button {
+button.infoButton {
 	margin-left: 0 5px;
 	border: none;
 	background-color: #E5ECC6;
@@ -55,8 +55,8 @@ button.i-button {
 	font-size:12px;
 }
 
-button.i-button:hover,
-button.i-button:focus {
+button.infoButton:hover,
+button.infoButton:focus {
 	cursor: pointer;
 	background-color: #E5EC00;
 	border-bottom: 2px solid rgba(0, 0, 0, 0.3);
