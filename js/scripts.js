@@ -1,31 +1,31 @@
 //start of IIFE
 var pokemonRepository = (function () {
-	var repository = [];
+	var repo = [];
 	var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=151';
 
 	function add(pokemon) {
-		repository.push(pokemon);
+		repo.push(pokemon);
 	}
 
 	function getALL() {
-		return repository;
+		return repo;
 	}
 
 	function loadList() {
 		return fetch(apiUrl).then(function (response) {
 			return response.json();
 		}).then(function (json) {
-			json.results.forEach(function (item) {
+			json.results.forEach(function (entry) {
 				var pokemon = {
-					name: item.name,
-					detailsUrl: item.url
+					name: entry.name,
+					detailsUrl: entry.url
 				};
 				add(pokemon);
 			});
 		});
 	}
 
-	function addListItem(item) {
+	function addListItem(entry) {
 
 		//defining li and class
 		var $li = document.createElement('li');
@@ -38,25 +38,25 @@ var pokemonRepository = (function () {
 		//button creation
 		var $info_button = document.createElement('button');
 		$info_button.classList.add('p-button');
-		$info_button.innerHTML = item.name;
+		$info_button.innerHTML = entry.name;
 		$li.appendChild($info_button);
 
 		//event listener
 		$info_button.addEventListener('click', function (event) {
-			console.log(item.name);
+			console.log(entry.name);
 		});
 
 	}
 
-	function loadDetails(item) {
-		var url = item.detailsUrl;
+	function loadDetails(entry) {
+		var url = entry.detailsUrl;
 		return fetch(url).then(function (response) {
 			return response.json();
 		}).then(function (details) {
-			// Now we add the details to the item
-			item.imageUrl = details.sprites.front_default;
-			item.height = details.height;
-			item.types = Object.keys(details.types);
+			// Now we add the details to the entry
+			entry.imageUrl = details.sprites.front_default;
+			entry.height = details.height;
+			entry.types = Object.keys(details.types);
 		}).catch(function (e) {
 			console.error(e);
 		});
@@ -90,6 +90,6 @@ var pmon = pokemonRepository.getALL();
 
 console.log(pmon);
 
-pmon.forEach(function (item) {
-	pokemonRepository.addListItem(item);
+pmon.forEach(function (entry) {
+	pokemonRepository.addListItem(entry);
 });
