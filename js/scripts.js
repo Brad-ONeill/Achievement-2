@@ -49,7 +49,7 @@ var pokemonRepository = (function () {
 		$ul.appendChild($li);
 		//button creation
 		var $info_button = document.createElement('button');
-		$info_button.classList.add('infoButton');
+		$info_button.classList.add('info-button');
 		$info_button.innerHTML = entry.name;
 		$li.appendChild($info_button);
 		//event listener
