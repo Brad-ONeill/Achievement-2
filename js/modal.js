@@ -9,12 +9,11 @@
 	}
 
 	//modal IFFE
-	document.querySelector('#modal-button').addEventListener('click', () => {
-		showModal();
-	});
+	//	document.querySelector('#modal-button').addEventListener('click', () => {
+	//		showModal();
+	//	});
 
-	//-- show modal --
-	function showModal(title, text) {
+	function showModal(title, image, height, pelement) {
 		var $modalContainer = document.querySelector('#modal-container');
 		$modalContainer.innerHTML = '';
 
@@ -27,33 +26,45 @@
 		closeButtonElement.addEventListener('click', hideModal);
 
 		var titleElement = document.createElement('h1');
-		titleElement.innerText = title;
+		titleElement.innerText = title;												//title is an object
+		
+		var contentImage = document.createElement('img');
+		contentImage.src = image;													//image is an object
 
+		var contentHeight = document.createElement('p');
+		contentHeight.innerText = 'Height: ' + height + 'm';						// 'string' + [object] + 'string'
+		
 		var contentElement = document.createElement('p');
-		contentElement.innerText = text;
+		contentElement.innerText = 'Elements: ' + pelement; 						// pelement is an object
+		contentElement.innerText = contentElement.innerText.replace(',',', '); 		// replaces ',' in the array with ', ' to add a space
 
 		modal.appendChild(closeButtonElement);
 		modal.appendChild(titleElement);
+		modal.appendChild(contentImage);
+		modal.appendChild(contentHeight);
 		modal.appendChild(contentElement);
 		$modalContainer.appendChild(modal);
 
 		$modalContainer.classList.add('is-visible');
+		
+		$modalContainer.addEventListener('click', (e) => {							//listening for an event (click) anywhere on the modalContainer
+			var target = e.target;
+			console.log(e.target)
+			if (target === $modalContainer) {
+				hideModal();
+			}
+		});
 	};
 
-	document.querySelector('#modal-button').addEventListener('click', () => {
-		showModal('PokéMon', 'Here is all of the info about your PokéMon');
-	});
+	//	document.querySelector('#modal-button').addEventListener('click', () => {
+	//		showModal('PokéMon', 'Here is all of the info about your PokéMon');
+	//	});
 
-	window.addEventListener('keydown', (e) => {
+	window.addEventListener('keydown', (e) => {										//listening for an event (ESC) of the browser window
 		var $modalContainer = document.querySelector('#modal-container');
 		if (e.key === 'Escape' && $modalContainer.classList.contains('is-visible')) {
 			hideModal();
 		}
 	});
 
-	$modalContainer.addEventListener('click', (e) => {
-		var target = e.target;
-		if (target === $modalContainer) {
-			hideModal();
-		}
-	});
+	

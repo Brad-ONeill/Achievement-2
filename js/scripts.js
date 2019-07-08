@@ -1,6 +1,6 @@
-var pokemonRepository = (function () {
-	var repo = [];
-	var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=151';
+var pokemonRepository = (function () {								//pokemonRepository is the name of the IIFE
+	var repo = [];													//repo is the name of the array
+	var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=151';	//specifying maximum limit to call from the API
 
 	function add(pokemon) {
 		repo.push(pokemon);
@@ -27,36 +27,54 @@ var pokemonRepository = (function () {
 	}
 
 	function loadDetails(item) {
-		var url = entry.detailsUrl;
+		var url = item.detailsUrl;
 
 		return fetch(url).then(function (response) {
 			return response.json();
 		}).then(function (details) {
 			item.imageUrl = details.sprites.front_default;
 			item.height = details.height;
-			item.types = Object.keys(details.types);
+			var types = [];											//element types are stored as arrays so...
+			
+			details.types.forEach(function(item) {					//for each pokemon...
+				types.push(item.type.name)							//push the array details into var types...
+			});
+			
+			item.types = types										//then identify the array as [object].type to be called on line 52
+			
 		}).catch(function (e) {
 			console.error(e);
 		});
 	}
-
-	function addListItem(entry) {
-
-		var $li = document.createElement('li');
-		$li.classList.add('pokedexItem');
 	
-		var $ul = document.querySelector('ul');
-		$ul.appendChild($li);
+	function showDetails(pokemon) { 
+		//loads the details (line 29) of the pokemon that was clicked THEN...
+		pokemonRepository.loadDetails(pokemon).then(function(){ 							
+			//calls [displays] the modal and populates it with the name, image, height and types
+			showModal(pokemon.name, pokemon.imageUrl, pokemon.height, pokemon.types)
+		})
+	}
+	
+	function addListItem(entry) {									//this is the function used to create the list
 		
+		//creates a li HTML element
+		var $li = document.createElement('li');
+		$li.classList.add('pokedexItem');							//assigns class pokdesItem to the li element
+	
+		//creates a ul HTML element
+		var $ul = document.querySelector('ul');
+		$ul.appendChild($li);										//attaches ul element to li element created above
+		
+		//creates a button HTML element
 		var $info_button = document.createElement('button');
-		$info_button.classList.add('infoButton');
-		$info_button.setAttribute('id', "modal-button");
-		$info_button.innerHTML = entry.name;
-		$li.appendChild($info_button);
+		$info_button.classList.add('infoButton');					//assigns the class "infoButton" to the element
+		$info_button.setAttribute('id', "modal-button");			//assigns the id "modal-button" to the element
+		$info_button.innerHTML = entry.name;						//populate the button with the name of the pokemon fro the array
+		$li.appendChild($info_button);								//attaches the button to the li HTML element
 
 		//event listener
-		$info_button.addEventListener('click', function (event) { // listening for a click action on the button to add name and details URL to the console
-			console.log(entry.name, entry.detailsUrl);
+		$info_button.addEventListener('click', function (event) { 	//if the user clicks the button...
+			showDetails(entry);										//show the details of that entry [pokemon]
 		});
 
 	}
@@ -68,19 +86,14 @@ var pokemonRepository = (function () {
 		addListItem: addListItem,
 		loadList: loadList,
 		loadDetails: loadDetails
-
 	};
 
 })();
 
-//--modal--
-
-//--modal end--
-
-pokemonRepository.loadList().then(function () {
+pokemonRepository.loadList().then(function () {						//loads the full list of pokemon from the API
 	// Now the data is loaded!
-	pmon.forEach(function (entry) {
-		pokemonRepository.addListItem(entry);
+	pmon.forEach(function (entry) {									//for each entry in the array...
+		pokemonRepository.addListItem(entry);						//create a list item (line 58) until specified limit (line 3) is reached
 	});
 });
 
