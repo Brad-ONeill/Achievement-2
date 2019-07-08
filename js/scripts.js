@@ -11,7 +11,7 @@ var pokemonRepository = (function () {
 	}
 
 	function loadList() {
-		return fetch(apiUrl).then(function (response) {					
+		return fetch(apiUrl).then(function (response) {
 			return response.json();
 		}).then(function (json) {
 			json.results.forEach(function (item) {
@@ -42,23 +42,20 @@ var pokemonRepository = (function () {
 
 	function addListItem(entry) {
 
-		//step 1
-		var $li = document.createElement('li'); 							// creates li element
-		$li.classList.add('pokedex_item'); 									// add the class 'pokedex_item' to the li element
-
-		//step 2
-		var $ul = document.querySelector('ul'); 							//select ul from the document
-		$ul.appendChild($li); 												// add the li element from step 1 to the ul element
-
-		//step 3
-		var $info_button = document.createElement('button'); 				// create the 'button' element
-		$info_button.classList.add('info-button'); 							// add 'info-button' as a class to the button element
-		$info_button.setAttribute('id', "modal-button");					// add 'modal-button' as an id to the button lement
-		$info_button.innerHTML = entry.name; 								// add the entry name of the PokéMon to the button element
-		$li.appendChild($info_button);										// add the button to the li element
+		var $li = document.createElement('li');
+		$li.classList.add('pokedexItem');
+	
+		var $ul = document.querySelector('ul');
+		$ul.appendChild($li);
+		
+		var $info_button = document.createElement('button');
+		$info_button.classList.add('infoButton');
+		$info_button.setAttribute('id', "modal-button");
+		$info_button.innerHTML = entry.name;
+		$li.appendChild($info_button);
 
 		//event listener
-		$info_button.addEventListener('click', function (event) { 			// listening for a click action on the button to add name and details URL to the console
+		$info_button.addEventListener('click', function (event) { // listening for a click action on the button to add name and details URL to the console
 			console.log(entry.name, entry.detailsUrl);
 		});
 
@@ -76,7 +73,9 @@ var pokemonRepository = (function () {
 
 })();
 
+//--modal--
 
+//--modal end--
 
 pokemonRepository.loadList().then(function () {
 	// Now the data is loaded!
@@ -88,4 +87,5 @@ pokemonRepository.loadList().then(function () {
 //pmon is the full repository
 var pmon = pokemonRepository.getALL();
 
+//writes all the pokemon to the console
 console.log(pmon);

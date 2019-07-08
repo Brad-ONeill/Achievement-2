@@ -37,17 +37,17 @@ li {
 	line-height: 30px;
 }
 
-button.searchbutton {
+button.searchButton {
 	border: none;
 	background-color: #fff;
 }
 
-button.searchbutton:hover,
-button.searchbutton:focus {
+button.searchButton:hover,
+button.searchButton:focus {
 	cursor: pointer;
 }
 
-button.info-button {
+button.infoButton {
 	margin-left: 0 5px;
 	border: none;
 	background-color: #E5ECC6;
@@ -56,8 +56,8 @@ button.info-button {
 	font-size: 12px;
 }
 
-button.info-button:hover,
-button.info-button:focus {
+button.infoButton:hover,
+button.infoButton:focus {
 	cursor: pointer;
 	background-color: #E5EC00;
 	border-bottom: 2px solid rgba(0, 0, 0, 0.3);
@@ -88,7 +88,65 @@ header {
 	width: 50px;
 }
 
-.search_icon {
+.searchIcon {
 	height: 20px;
 	width: 20px;
 }
+#modal-container {
+  display: none;
+}
+
+#modal-container.is-visible {
+  display: block;
+  position: fixed;
+  padding: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  
+  /* to show it above other content */
+  z-index: 999; 
+  
+  /* to allow scrolling if the screen is not high enough*/
+  overflow: auto; 
+  
+  /* this is used to center the modal */
+  display: grid;
+  text-align: center;
+}
+
+.modal {
+  margin: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  background: #ffde00;
+  padding: 15px;
+  width: 100%;
+  max-width: 700px;
+  text-align: left;
+  border: 10px solid #3b4cca;
+  border-radius: 6px;
+}
+
+.modal-close {
+  float: right;
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+  color: #c00;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 26px
+}
+
+.modal h1 {
+  margin-top: 0;
+}
+
+.modal p {
+  margin-bottom: 0;
+}
+
